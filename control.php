@@ -1,5 +1,7 @@
 <?php
 //-- TEKNIK OOP --
+// test
+// test
 
 //fungsi untuk mengatur bahasa
 function language($lang){
