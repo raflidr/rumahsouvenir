@@ -16,18 +16,26 @@ function language($lang){
 
 //Koneksi ke database
 class databases {
-	public $host   = getenv('DB_HOST');
-	public $name   = getenv('DB_USERNAME');
+	public $host   = '';
+	public $name   = '';
 	public $pass   = '';
-	Public $dbname = getenv('DB_DATABASE');
+	public $dbname = '';
 	public $mysqli;
 
 	//fungsi menguji koneksi database
-		function __construct(){
-		$this->mysqli = new mysqli($this->host, $this->name, $this->pass, $this->dbname);
-		if ($this->mysqli->connect_errno){
-			echo "databse not found";
-			exit;
+		function __construct() {
+			$env = parse_ini_file('.env');
+
+			$this->host = $env['DB_HOST'];
+			$this->name = $env['DB_USERNAME'];
+			$this->pass = '';
+			$this->dbname = $env['DB_DATABASE'];
+
+			$this->mysqli = new mysqli($this->host, $this->name, $this->pass, $this->dbname);
+
+			if ($this->mysqli->connect_errno){
+				echo "databse not found";
+				exit;
 			}
 		}
 
