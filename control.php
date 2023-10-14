@@ -16,10 +16,10 @@ function language($lang){
 
 //Koneksi ke database
 class databases {
-	public $host   = 'localhost';
-	public $name   = 'root';
+	public $host   = getenv('DB_HOST');
+	public $name   = getenv('DB_USERNAME');
 	public $pass   = '';
-	Public $dbname = 'db_companyprofile';
+	Public $dbname = getenv('DB_DATABASE');
 	public $mysqli;
 
 	//fungsi menguji koneksi database
